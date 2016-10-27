@@ -1,0 +1,21 @@
+<%= link_to "Create new post!", new_post_path, class:"btn btn-success" %>
+
+<table class="table table-striped">
+    <% @posts.each do |post| %>
+    <tr>
+    <td>
+        <%= post.vote %>
+    </td>
+    <td>
+        <%= link_to "+1", vote_post_path(post), class: "btn btn-warning btn-xs" %>
+    </td>
+    <td>
+        <%= link_to post.title, post.link %>
+    </td>
+    <td>
+        Submitted by: <%= post.author %>
+    </td>
+    </tr>
+
+    <% end %>
+</table>

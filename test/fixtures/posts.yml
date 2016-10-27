@@ -2,10 +2,12 @@
 
 one:
   vote: 1
-  link: MyText
-  author: MyText
+  title: MyString
+  link: MyString
+  author: MyString
 
 two:
   vote: 1
-  link: MyText
-  author: MyText
+  title: MyString
+  link: MyString
+  author: MyString

@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do
+  Post.create!(
+    vote: rand(400..800),
+    title: Faker::StarWars.quote,
+    link: Faker::Internet.url,
+    author: Faker::GameOfThrones.character
+  )
+end
