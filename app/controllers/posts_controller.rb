@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :find_post, only: [:show, :edit, :update, :vote]
+  before_action :find_post, only: [:show, :edit, :update, :vote, :link_vote]
 
   def index
     @posts = Post.order(vote: :DESC)
@@ -22,10 +22,16 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @post.vote += 1
-    @post.save
+    @post.increment!(:vote, by = 1)
     redirect_to :root
   end
+
+  def link_vote
+    @post.increment!(:vote, by = 1)
+    redirect_to @post.link
+  end
+
+
 
   def edit
     render :new

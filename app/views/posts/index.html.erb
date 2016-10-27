@@ -10,7 +10,14 @@
         <%= link_to "+1", vote_post_path(post), class: "btn btn-warning btn-xs" %>
     </td>
     <td>
-        <%= link_to post.title, post.link %>
+        <div class="row">
+            <%=  link_to post.title, link_vote_post_path(post) %>
+        </div>
+        <div class="row">
+            <%= (post.created_at).strftime("%v %R") %>
+        </div>
+
+
     </td>
     <td>
         Submitted by: <%= post.author %>
