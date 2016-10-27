@@ -7,14 +7,19 @@
         <%= post.vote %>
     </td>
     <td>
-        <%= link_to "+1", vote_post_path(post), class: "btn btn-warning btn-xs" %>
+        <div class="vote">
+            <%= link_to "+1", vote_post_path(post), class: "btn btn-warning btn-xs vote" %>
+        </div>
+        <div class="vote">
+            <%= link_to "-1", down_vote_post_path(post), class: "btn btn-info btn-xs vote" %>
+        </div>
     </td>
     <td>
-        <div class="row">
+        <div class="post-column">
             <%=  link_to post.title, link_vote_post_path(post) %>
         </div>
-        <div class="row">
-            <%= (post.created_at).strftime("%v %R") %>
+        <div class="post-column">
+            Submitted at: <%= (post.created_at).strftime("%v %R") %>
         </div>
 
 
