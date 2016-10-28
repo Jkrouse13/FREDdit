@@ -1,7 +1,8 @@
-<%= simple_form_for(@post) do |f| %>
+<%= simple_form_for(@post, html: { class: 'form-horizontal' }) do |f| %>
 <%= f.input :title %>
-<%= f.input :link %>
-<%= f.input :author %>
+<%= f.input :link  %>
+<%= f.input :summary %>
+<%= f.association :user %>
 
 <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-
-  validates_presence_of :title, :link, :vote, :author
-
+  belongs_to :user
+  validates_presence_of :title, :link, :vote
+  validates :link, uniqueness: true
 end

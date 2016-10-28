@@ -10,8 +10,10 @@
 
   <body>
     <div class="container">
-      <h2>FREDdit</h2>
-    <%= yield %>
+      <h2><%= link_to "FREDdit", root_path %> </h2>
+      <div class="row">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

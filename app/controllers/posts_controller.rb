@@ -54,8 +54,13 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :link, :author)
+    params.require(:post).permit(:title, :link, :user_id)
   end
 
+  def non_unique_link
+    repost = Post.find_by(link: @post.link)
+    repost.increment!(:vote, by = 1)
+    redirect_to :root
+  end
 
 end
