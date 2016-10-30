@@ -54,7 +54,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :link, :user_id)
+    params.require(:post).permit(:title, :link, :user_id, :summary)
   end
 
   def non_unique_link
