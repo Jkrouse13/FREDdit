@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :votes
   resources :subfreds
   resources :users
   root 'posts#index'
@@ -12,5 +13,6 @@ end
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create', as: :login_user
   get '/logout' => 'sessions#destroy', as: :logout
+  get '/signup' => 'users#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

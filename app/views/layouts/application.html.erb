@@ -30,6 +30,16 @@
         <%= link_to "Login!", login_path, class: "btn btn-success" %>
       </div>
       <% end %>
+      <% if flash.any? %>
+        <% flash.each do |key, message| %>
+          <div class="alert alert-<%= key %> row" role="alert">
+            <p>
+              <%= message %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="row">
         <%= yield %>
       </div>

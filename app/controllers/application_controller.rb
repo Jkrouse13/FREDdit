@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def logged_in?
+    current_user
+  end
 
+  def logged_out?
+    !current_user
+  end
+
+  def require_logged_in
+    redirect_to :root if logged_out?
+  end
 
 end

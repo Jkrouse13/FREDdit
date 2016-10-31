@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :find_post, only: [:show, :edit, :update, :vote, :link_vote, :down_vote]
+  before_action :find_post, only: [:vote, :link_vote, :down_vote]
+  # before_action :require_logged_in, except: [:index, :link_vote]
 
   def index
     @posts = Post.order(vote: :DESC)
@@ -22,12 +23,17 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @post.increment!(:vote, by = 1)
-    redirect_to :root
+    if current_user
+      @post.increment!(:vote)
+      redirect_to :root
+    else
+      flash[:warning] = "You must be logged in to vote!"
+      redirect_to :login
+    end
   end
 
   def link_vote
-    @post.increment!(:vote, by = 1)
+    @post.decrement!(:vote)
     redirect_to @post.link
   end
 
@@ -59,7 +65,7 @@ private
 
   def non_unique_link
     repost = Post.find_by(link: @post.link)
-    repost.increment!(:vote, by = 1)
+    repost.increment!(:vote)
     redirect_to :root
   end
 
