@@ -2,7 +2,7 @@
     <% @posts.each do |post| %>
     <tr>
     <td>
-        <%= post.vote %>
+        <%= post.votes.count %>
     </td>
     <% if current_user %>
     <td>

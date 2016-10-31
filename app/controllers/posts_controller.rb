@@ -13,9 +13,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.vote = 1
     @post.user = current_user
     if current_user.posts << @post
+      Vote.create!(post_id: @post)
       redirect_to root_path
     else
       render :new
