@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031185244) do
+ActiveRecord::Schema.define(version: 20161031202729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161031185244) do
     t.string   "summary"
     t.string   "subfred"
     t.integer  "subfred_id"
+    t.integer  "vote_count"
     t.index ["subfred_id"], name: "index_posts_on_subfred_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end

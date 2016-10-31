@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # before_action :require_logged_in, except: [:index, :link_vote]
 
   def index
-    @posts = Post.order(vote: :DESC)
+    @posts = Post.order(vote_count: :DESC)
   end
 
   def new
@@ -14,8 +14,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.vote_count = @post.votes.count
     if current_user.posts << @post
-      Vote.create!(post_id: @post)
+      @post.votes << Vote.create!(user_id: @post.user_id, post_id: @post.id)
+      @post.vote_count = @post.votes.count
+      @post.save
       redirect_to root_path
     else
       render :new
@@ -24,7 +27,9 @@ class PostsController < ApplicationController
 
   def vote
     if current_user
-      @post.increment!(:vote)
+      @post.votes << Vote.create!(user_id: @post.user_id, post_id: @post.id)
+      @post.vote_count = @post.votes.count
+      @post.save
       redirect_to :root
     else
       flash[:warning] = "You must be logged in to vote!"
@@ -33,13 +38,22 @@ class PostsController < ApplicationController
   end
 
   def link_vote
-    @post.decrement!(:vote)
+    @post.votes << Vote.create!(user_id: @post.user_id, post_id: @post.id)
+    @post.vote_count = @post.votes.count
+    @post.save
     redirect_to @post.link
   end
 
   def down_vote
-    @post.increment!(:vote, by = -1)
-    redirect_to :root
+    if logged_in?
+      @post.votes.last.destroy
+      @post.vote_count = @post.votes.count
+      @post.save
+      redirect_to :root
+      else
+        flash[:warning] = "You must be logged in to down vote!"
+        redirect_to :login
+    end
   end
 
 

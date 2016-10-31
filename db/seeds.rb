@@ -36,3 +36,8 @@ end
   user_id: rand(1..5)
   )
 end
+
+Post.all.each do |post|
+  post.vote_count = post.votes.count.to_i
+  post.save
+end
