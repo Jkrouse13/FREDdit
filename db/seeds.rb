@@ -8,7 +8,7 @@
 
 5.times do
   User.create!(
-    name: Faker::GameOfThrones.character,
+    name: Faker::GameOfThrones.character + "#{rand(1..100)}",
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
