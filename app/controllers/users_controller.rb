@@ -19,25 +19,10 @@ class UsersController < ApplicationController
     end
 
 
-
-    def edit
-      render :new
-    end
-
-    def update
-      @user.update(user_params)
-      @user.save
-      redirect_to :root
-    end
-
   private
 
-    def find_user
-      @user = User.find(params[:id])
-    end
-
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :email, :bio, :password, :password_confirmation)
     end
 
 

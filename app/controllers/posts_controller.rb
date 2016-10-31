@@ -13,8 +13,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.vote = 1
-    @post.save
-    if @post.save
+    @post.user = current_user
+    if current_user.posts << @post
       redirect_to root_path
     else
       render :new
@@ -54,7 +54,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title, :link, :user_id, :summary, :subfred_id)
+    params.require(:post).permit(:title, :link, :summary, :subfred_id)
   end
 
   def non_unique_link
