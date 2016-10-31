@@ -31,7 +31,7 @@ class SubfredsController < ApplicationController
 private
 
   def find_subfred
-    @subfred = Subfred.find(params[:id])
+    @subfred = subfred.find(params[:id])
   end
 
   def subfred_params

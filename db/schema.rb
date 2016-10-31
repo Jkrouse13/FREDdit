@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20161031020147) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "summary"
-    t.string   "subfred"
     t.integer  "subfred_id"
     t.index ["subfred_id"], name: "index_posts_on_subfred_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
