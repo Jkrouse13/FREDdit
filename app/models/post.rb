@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  validates_presence_of :title, :link, :vote
+  belongs_to :subfred
+  validates_presence_of :title, :link, :vote, :subfred
   validates :link, uniqueness: true
+
 end

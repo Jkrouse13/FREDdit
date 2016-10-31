@@ -4,6 +4,9 @@
 <div class="col-md-3 col-md-offset-6">
     <%= link_to "New User!", new_user_path, class: "btn btn-success" %>
 </div>
+<div class="col-md-3 col-md-offset-9">
+    <%= link_to "New Subfred!", new_subfred_path, class: "btn btn-success" %>
+</div>
 
 <table class="table table-striped">
     <% @posts.each do |post| %>
@@ -23,8 +26,10 @@
         <div class="post-column">
             <%=  link_to post.title, link_vote_post_path(post) %>
             <%= post.summary %>
+
         </div>
         <div class="post-column">
+            SubFred: <%= post.subfred.name %>
             Submitted at: <%= (post.created_at).strftime("%v %R") %>
         </div>
 

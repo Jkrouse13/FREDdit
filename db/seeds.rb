@@ -12,12 +12,19 @@
   )
 end
 
+3.times do
+  Subfred.create!(
+  name: Faker::StarWars.planet
+  )
+end
+
 10.times do
   Post.create!(
     vote: rand(400..800),
     title: Faker::StarWars.quote,
     link: Faker::Internet.url,
     user_id: rand(1..5),
-    summary: Faker::Team.name
+    summary: Faker::Team.name,
+    subfred_id: rand(1..3)
   )
 end

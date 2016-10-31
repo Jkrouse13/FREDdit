@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subfreds
   resources :users
   root 'posts#index'
   resources :posts do
