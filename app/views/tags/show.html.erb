@@ -1,5 +1,6 @@
+<h1><%= @tags.name %></h1>
 <table class="table table-striped">
-    <% @posts.each do |post| %>
+    <% @tags.posts.each do |post| %>
     <tr>
     <td>
         <%= post.vote_count %>
@@ -18,7 +19,6 @@
         <div class="post-column">
             <%=  link_to post.title, link_vote_post_path(post) %>
             <%= post.summary %>
-            <%= link_to "Comments", post %>
 
         </div>
         <div class="post-column">

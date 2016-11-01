@@ -2,8 +2,9 @@
 <%= f.input :title %>
 <%= f.input :link  %>
 <%= f.input :summary %>
-<%= f.association :subfred %>
 <%= f.input :tags, hint: "Please seperate the tags with commas!" %>
+<%= f.association :subfred %>
+
 
 <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

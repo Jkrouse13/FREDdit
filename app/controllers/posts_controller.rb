@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.order(vote_count: :DESC)
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+
   def new
     @post = Post.new
   end
@@ -18,7 +23,7 @@ class PostsController < ApplicationController
     if current_user.posts << @post
       tags = params[:post][:tags].split(",").collect(&:strip)
       tags.each do |tag|
-        @post.tags << Tag.new(name: tag)
+        @post.tags << Tag.find_or_initialize_by(name: tag)
       end
       @post.votes << Vote.create!(user_id: @post.user_id, post_id: @post.id)
       @post.vote_count = @post.votes.count
