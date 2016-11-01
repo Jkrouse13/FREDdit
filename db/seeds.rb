@@ -41,3 +41,14 @@ Post.all.each do |post|
   post.vote_count = post.votes.count.to_i
   post.save
 end
+
+10.times do
+  Tag.create!(
+  name: Faker::StarWars.specie
+  )
+
+  30.times do
+    Tagging.create!(
+    tag: Tag.all.sample,
+    post: Post.all.sample
+    )

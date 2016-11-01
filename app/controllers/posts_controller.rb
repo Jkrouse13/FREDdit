@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.vote_count = @post.votes.count
     if current_user.posts << @post
-      tags = params[:post][:tags].split(",").collect(&:strip)
+      tags = params[:post][:tag_names].split(",").collect(&:strip)
       tags.each do |tag|
         @post.tags << Tag.find_or_initialize_by(name: tag)
       end

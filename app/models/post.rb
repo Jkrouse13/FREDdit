@@ -7,4 +7,9 @@ class Post < ApplicationRecord
   validates_presence_of :title, :link
   validates :link, uniqueness: true
 
+
+  def tag_names
+    tags.collect(&:name).join(", ")
+  end
+
 end

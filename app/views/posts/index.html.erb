@@ -23,7 +23,7 @@
         </div>
         <div class="post-column">
             SubFred: <%= post.subfred.name %>
-            Submitted at: <%= (post.created_at).strftime("%v %R") %>
+            Submitted at: <%= (post.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R") %> EST
             Tags: <% post.tags.each do |tag| %>
                 <%= link_to tag.name, tag %>
                 <% end %>
