@@ -24,16 +24,16 @@ end
   Post.create!(
     title: Faker::StarWars.quote,
     link: Faker::Internet.url,
-    user_id: rand(1..5),
+    user_id: User.all.sample.id,
     summary: Faker::Team.name,
-    subfred_id: rand(1..3)
+    subfred_id: Subfred.all.sample.id
   )
 end
 
 100.times do
   Vote.create!(
-  post_id: rand(1..10),
-  user_id: rand(1..5)
+  post_id:  Post.all.sample.id,
+  user_id: User.all.sample.id
   )
 end
 
