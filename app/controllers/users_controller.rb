@@ -5,7 +5,12 @@ class UsersController < ApplicationController
 
 
     def new
-      @user = User.new
+      if logged_out?
+        @user = User.new
+      else
+        flash[:warning] = "You already have an account!"
+        redirect_to :root
+      end
     end
 
     def create
