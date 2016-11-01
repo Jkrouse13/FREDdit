@@ -16,6 +16,10 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.vote_count = @post.votes.count
     if current_user.posts << @post
+      tags = params[:post][:tags].split(",").collect(&:strip)
+      tags.each do |tag|
+        @post.tags << Tag.new(name: tag)
+      end
       @post.votes << Vote.create!(user_id: @post.user_id, post_id: @post.id)
       @post.vote_count = @post.votes.count
       @post.save

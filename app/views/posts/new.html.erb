@@ -3,6 +3,7 @@
 <%= f.input :link  %>
 <%= f.input :summary %>
 <%= f.association :subfred %>
+<%= f.input :tags, hint: "Please seperate the tags with commas!" %>
 
 <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
