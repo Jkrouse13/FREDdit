@@ -22,10 +22,10 @@ end
 
 10.times do
   Post.create!(
-    title: Faker::StarWars.quote,
+    title: Faker::Team.name,
     link: Faker::Internet.url,
     user_id: User.all.sample.id,
-    summary: Faker::Team.name,
+    summary: Faker::StarWars.quote,
     subfred_id: Subfred.all.sample.id
   )
 end
@@ -46,9 +46,10 @@ end
   Tag.create!(
   name: Faker::StarWars.specie
   )
-
+end
   30.times do
     Tagging.create!(
     tag: Tag.all.sample,
     post: Post.all.sample
     )
+  end

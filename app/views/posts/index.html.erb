@@ -25,7 +25,7 @@
             SubFred: <%= post.subfred.name %>
             Submitted at: <%= (post.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R") %> EST
             Tags: <% post.tags.each do |tag| %>
-                <%= link_to tag.name, tag %>
+                <%= link_to tag.name, tag, class: "btn btn-info" %>
                 <% end %>
         </div>
 

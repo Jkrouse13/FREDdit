@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   resources :tags, only: [:show]
   resources :votes
   resources :subfreds
   resources :users
   root 'posts#index'
   resources :posts do
+    resources :comments
     member do
     get :vote
     get :link_vote

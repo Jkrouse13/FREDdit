@@ -1,3 +1,28 @@
 <h1><%= @post.title %></h1>
 <h6> Submitted by: <%=@post.user.name %> at <%= (@post.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R")%> EST</h6>
 <h4><%= @post.summary %></h4>
+
+<h3>Comments</h3>
+  <% if current_user %>
+    <%= simple_form_for [@post, Comment.new] do |f| %>
+      <%= f.input :body %>
+      <%= f.submit "Fart Away!!", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
+<% @post.comments.each do |comment| %>
+<table class="table table-bordered">
+  <tr>
+    <td>
+      <div class="col-md-9">
+          <p><%= simple_format(comment.body)%></p>
+      </div>
+      <div class="col-md-3">
+        <h5>Submitted by: <%= comment.user.name %></h5>
+        <h5><%=(comment.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R")%> EST</h5>
+      </div>
+
+    </td>
+  </tr>
+</table>
+<% end %>
