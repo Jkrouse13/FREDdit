@@ -8,18 +8,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-      user = User.find_by(name: params[:session][:name])
+      user = User.find_by(name: params[:session][:name])&.authenticate(params[:session][:password])
       if user
-        if user.authenticate(params[:session][:password])
           session[:user_id] = user.id
           redirect_to :root
         else
-          flash.now[:warning] = "Your password is incorrect!"
+          flash.now[:warning] = "Your credentials do not match!"
           render :new
-        end
-      else
-        flash.now[:warning] = "There is no user by that name here."
-        render :new
       end
   end
 
