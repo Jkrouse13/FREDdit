@@ -1,2 +1,2 @@
-<h4><%= @comment.body %></h4>
+<h4><%= simple_format(@comment.body) %></h4>
 <h5>Submitted by: <%= @comment.user.name %> at <%=(@comment.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R")%> EST</h5>
