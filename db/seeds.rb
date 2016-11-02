@@ -13,12 +13,7 @@
     password: Faker::Internet.password
   )
 end
-User.create!(
-name: "jk",
-email: "jk@jk.com",
-password: "123",
-id: 36
-)
+
 3.times do
   Subfred.create!(
   name: Faker::StarWars.planet
