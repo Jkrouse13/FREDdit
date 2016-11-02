@@ -24,7 +24,7 @@ end
   Post.create!(
     title: Faker::Team.name,
     link: Faker::Internet.url,
-    user_id: User.all.sample.id,
+    user: User.all.sample,
     summary: Faker::StarWars.quote,
     subfred_id: Subfred.all.sample.id
   )
