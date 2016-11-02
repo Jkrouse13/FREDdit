@@ -20,6 +20,7 @@
       <div class="col-md-3">
         <h5>Submitted by: <%= comment.user.name %></h5>
         <h5><%=(comment.created_at).in_time_zone('Eastern Time (US & Canada)').strftime("%v %R")%> EST</h5>
+        <h6><%= link_to "View comment", post_comment_path(comment.post, comment) %></h6>
       </div>
 
     </td>
