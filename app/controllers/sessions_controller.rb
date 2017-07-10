@@ -6,9 +6,6 @@ class SessionsController < ApplicationController
       redirect_to :root
     end
   end
-
-  def stuff
-  end
   
   def create
       user = User.find_by(name: params[:session][:name])&.authenticate(params[:session][:password])
